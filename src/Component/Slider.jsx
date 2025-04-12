@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { items } from '../Data/400Data';
-import { SeralData } from '../Data/Serial'
+import { SeralData } from '../Data/Serial';
+import { movies } from '../Data/Movies';
 
 function Slider({ currentShow }) {
     const featuredMovie = {
@@ -14,13 +15,13 @@ function Slider({ currentShow }) {
     };
 
 
+    const BASE_URL = "https://img10.hotstar.com/image/upload/f_auto,q_90,w_3840/";
+    const getImageUrl = (path) => path ? `${BASE_URL}${path}` : "/api/placeholder/180/270";
 
-    // Refs for each section
     const ref1 = useRef(null);
     const ref2 = useRef(null);
     const ref3 = useRef(null);
 
-    // Auto scroll function
     const autoSlide = (ref) => {
         if (ref.current) {
             const { scrollLeft, scrollWidth, clientWidth } = ref.current;
@@ -32,7 +33,6 @@ function Slider({ currentShow }) {
         }
     };
 
-    // Manual scroll function
     const handleSlide = (direction, ref) => {
         if (ref.current) {
             const scrollAmount = 200;
@@ -67,30 +67,25 @@ function Slider({ currentShow }) {
                     {/* Section 1 */}
                     <section className="mb-8">
                         <div className='flex p-1.5 justify-between my-1.5'>
-                            <h2 className="text-xl font-bold mb-4">From items Data</h2>
+                            <h2 className="text-xl font-bold mb-4">Latest Episodes Before TV</h2>
                             <div>
                                 <button className='border shadow-2xl border-white cursor-pointer hover:bg-red-600 hover:text-white hover:border-0 rounded-xl py-3.5 px-3.5' onClick={() => handleSlide('left', ref1)}>{`<`}</button> &nbsp;
                                 <button className='border shadow-2xl border-white cursor-pointer hover:bg-red-600 hover:text-white hover:border-0 rounded-xl py-3.5 px-3.5' onClick={() => handleSlide('right', ref1)}>{`>`}</button>
                             </div>
                         </div>
                         <div ref={ref1} className="flex overflow-x-auto space-x-4 pb-4 scroll-smooth">
-                            {items.map((entry, index) =>
-                                entry.titles.map((title, subIndex) => {
-                                    const jaw = title.jawSummary;
-                                    return (
-                                        <div key={`${index}-${subIndex}`} className="flex-none w-32 md:w-40 lg:w-44">
-                                            <div className="rounded overflow-hidden shadow-lg hover:scale-105 transition-transform duration-200">
-                                                <img
-                                                    src={jaw.backgroundImage?.url || "/api/placeholder/180/270"}
-                                                    alt={jaw.title}
-                                                    className="w-full h-48 md:h-56 lg:h-64 object-cover"
-                                                />
-                                            </div>
-                                            <div className="mt-1 text-sm truncate text-white">{jaw.title}</div>
-                                        </div>
-                                    );
-                                })
-                            )}
+                            {SeralData.map((entry, index) => (
+                                <div key={entry.id || index} className="flex-none w-32 md:w-40 lg:w-44">
+                                    <div className="rounded overflow-hidden shadow-lg hover:scale-105 transition-transform duration-200">
+                                        <img
+                                            src={getImageUrl(entry.image?.thumbnail)}
+                                            alt={entry.image?.alt || entry.title}
+                                            className="w-full cursor-pointer h-48 md:h-56 lg:h-64 object-cover"
+                                        />
+                                    </div>
+                                    <div className="mt-1 text-sm truncate text-white">{entry.title}</div>
+                                </div>
+                            ))}
                         </div>
                     </section>
 
@@ -102,7 +97,7 @@ function Slider({ currentShow }) {
                                     <img
                                         src={featuredMovie.image}
                                         alt={featuredMovie.title}
-                                        className="w-full h-64 md:h-full object-cover"
+                                        className="w-full cursor-pointer h-64 md:h-full object-cover"
                                     />
                                 </div>
                                 <div className="md:w-1/2 p-6">
@@ -128,38 +123,56 @@ function Slider({ currentShow }) {
                         </div>
                     </section>
 
-                    {/* Section 2 */}
+
+
                     <section className="mb-8">
                         <div className='flex p-1.5 justify-between my-1.5'>
-                            <h2 className="text-xl font-bold mb-4">TV Shows / Series</h2>
+                            <h2 className="text-xl font-bold mb-4">Latest Releases </h2>
                             <div>
                                 <button className='border shadow-2xl border-white cursor-pointer hover:bg-red-600 hover:text-white hover:border-0 rounded-xl py-3.5 px-3.5' onClick={() => handleSlide('left', ref2)}>{`<`}</button> &nbsp;
                                 <button className='border shadow-2xl border-white cursor-pointer hover:bg-red-600 hover:text-white hover:border-0 rounded-xl py-3.5 px-3.5' onClick={() => handleSlide('right', ref2)}>{`>`}</button>
                             </div>
                         </div>
                         <div ref={ref2} className="flex overflow-x-auto space-x-4 pb-4 scroll-smooth">
-                            {items.map((entry, index) =>
-                                entry.titles.map((title, subIndex) => {
-                                    const jaw = title.jawSummary;
-                                    return (
-                                        <div key={`${index}-${subIndex}`} className="flex-none w-32 md:w-40 lg:w-44">
-                                            <div className="rounded overflow-hidden shadow-lg hover:scale-105 transition-transform duration-200">
-                                                <img
-                                                    src={jaw.backgroundImage?.url || "/api/placeholder/180/270"}
-                                                    alt={jaw.title}
-                                                    className="w-full h-48 md:h-56 lg:h-64 object-cover"
-                                                />
+                            {movies.map((entry, index) => (
+                                <div key={entry.id || index} className="flex-none w-32 md:w-40 lg:w-44">
+                                    <div className="rounded overflow-hidden shadow-lg hover:scale-105 transition-transform duration-200">
+                                        <img
+                                            src={(entry.image)}
+                                            alt={entry.image?.alt || entry.title}
+                                            className="w-full cursor-pointer h-48 md:h-56 lg:h-64 object-cover"
+                                        />
+
+                                        {/* Hover Card */}
+                                        <div className="absolute top-0 left-0 z-10 hidden group-hover:flex flex-col w-96 bg-[#141414] text-white rounded-xl p-4 shadow-2xl transition-all duration-300 ease-in-out">
+                                            <img 
+                                                src={entry.image}
+                                                alt={entry.title}
+                                                className="w-full cursor-pointer h-48 rounded-lg object-cover mb-2"
+                                            />
+
+                                            <button className="bg-white text-black font-semibold py-2 px-4 rounded-md flex items-center justify-center mb-2 hover:bg-red-600 hover:text-white transition">
+                                                ▶️ Watch Now
+                                            </button>
+
+                                            <div className="text-sm text-gray-400 mb-1">
+                                                {entry.year} • {entry.rating} • {entry.language} • {entry.genre}
                                             </div>
-                                            <div className="mt-1 text-sm truncate text-white">{jaw.title}</div>
+
+                                            <div className="text-xs text-gray-300 line-clamp-4">
+                                                {entry.description}
+                                            </div>
                                         </div>
-                                    );
-                                })
-                            )}
+                                    </div>
+                                    <div className="mt-1 text-sm truncate text-white">{entry.title}</div>
+                                </div>
+                            ))}
                         </div>
                     </section>
 
+
                     {/* Section 3 */}
-                    <section className="mb-8">
+                    <section id='SdNone' className="mb-8 ">
                         <div className='flex p-1.5 justify-between my-1.5'>
                             <h2 className="text-xl font-bold mb-4">Movies Entertainment</h2>
                             <div>
@@ -177,7 +190,7 @@ function Slider({ currentShow }) {
                                                 <img
                                                     src={jaw.backgroundImage?.url || "/api/placeholder/180/270"}
                                                     alt={jaw.title}
-                                                    className="w-full h-48 md:h-56 lg:h-64 object-cover"
+                                                    className="w-full cursor-pointer h-48 md:h-56 lg:h-64 object-cover"
                                                 />
                                             </div>
                                             <div className="mt-1 text-sm truncate text-white">{jaw.title}</div>
