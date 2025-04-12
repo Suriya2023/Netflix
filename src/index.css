@@ -1,0 +1,113 @@
+@import "tailwindcss";
+
+
+
+
+.flex li>a {
+  /* padding: 2vmin; */
+  border-radius: 2vmin;
+
+  /* background-color: red; */
+}
+
+
+.search-container {
+  float: right;
+}
+
+.search-container form {
+
+  float: right;
+  /* border: 2px solid; */
+  display: flex;
+  /* width: 110%; */
+  gap: 1vmin;
+  /* padding: 2vmin; */
+  justify-content: flex-end;
+  width: auto;
+}
+
+.search-container input[type=text] {
+  border: 2px solid;
+  padding: 6px;
+  width: 100%;
+  margin-top: 8px;
+  font-size: 17px;
+  border: none;
+}
+
+.search-container button {
+  float: right;
+  padding: 6px 10px;
+  margin-top: 8px;
+  /* margin-right: 16px; */
+  background: rgb(149, 149, 149);
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+
+.search-container button:hover {
+  background: gray;
+}
+
+.Home {
+  /* display: none; */
+  align-items: center;
+  display: flex;
+  vertical-align: middle;
+  height: 100vh;
+  /* border: 2px solid red; */
+}
+
+#Mysd {
+  width: auto;
+}
+
+#Mysd>div {
+  width: 50%;
+  padding: 7px;
+
+}
+
+#adujest {
+  display: flex;
+  width: 97vw;
+  padding: 2vmin;
+  flex-direction: column;
+  /* align-items: flex-end; */
+  vertical-align: bottom;
+  height: 100%;
+  /* overflow-x: none; */
+  justify-content: center;
+}
+@media screen and (max-width:427px) {
+  #adujest{
+    width: 100%;
+  }
+  
+ 
+}
+#MySlide{
+  width: 100vw;
+  height: 80vh;
+}
+
+/* styles.css */
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hidden {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+
+/* 
+#Shadow{
+  box-shadow:inset 10px 10px 5px lightblue ;
+} */
+
+
+.pedi-bg-div {
+  background: linear-gradient(to left, rgba(134, 134, 134, 0.905), rgb(0, 0, 0)) !important;
+}
