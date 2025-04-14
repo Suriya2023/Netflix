@@ -73,15 +73,15 @@ function StreamingPlatform() {
 
     return (
         <div className="bg-black text-white min-h-screen">
-     
+            {/* Featured Content Banner */}
             <div className="relative container mx-auto">
-          
+                {/* Dark Gradient Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-black opacity-70"></div>
 
-          
+                {/* Featured Movie Banner */}
                 <div className="relative">
                     <div className="w-full h-96 bg-gray-800 relative overflow-hidden">
-                     
+                        {/* Banner image with blurred background */}
                         <div
                             className="absolute inset-0 bg-cover bg-center"
                             style={{
@@ -90,10 +90,10 @@ function StreamingPlatform() {
                             }}
                         ></div>
 
-           
+                        {/* Focused movie poster overlay */}
                         <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-black opacity-80"></div>
 
-                 
+                        {/* Movie details */}
                         <div className="absolute bottom-0 left-0 p-6 w-full md:w-3/4 lg:w-1/2">
                             <h1 className="text-4xl md:text-5xl font-bold text-gray-100 mb-2">FIFTYSHADES<br />DARKER</h1>
                             <div className="flex items-center text-sm mb-3">
@@ -122,11 +122,12 @@ function StreamingPlatform() {
                 </div>
             </div>
 
-      
+            {/* Content Sections */}
+            {/* Non-Stop Sports */}
             <div className="mt-6 container mx-auto px-4">
                 <h2 className="text-xl font-bold mb-3">Non-Stop Sports</h2>
                 <div ref={sportsRowRef} className="flex space-x-4 overflow-x-auto pb-4 cursor-grab" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
-              
+                    {/* Sports content items */}
                     <div className="flex-shrink-0 w-44 relative">
                         <div className="h-24 bg-gradient-to-r from-pink-600 to-purple-600 rounded overflow-hidden relative">
                             <div className="absolute bottom-2 left-2">
@@ -171,11 +172,12 @@ function StreamingPlatform() {
                     </div>
                 </div>
             </div>
- 
+
+            {/* Latest Releases */}
             <div className="mt-8 container mx-auto px-4">
                 <h2 className="text-xl font-bold mb-3">Latest Releases</h2>
                 <div ref={latestRowRef} className="flex space-x-4 overflow-x-auto pb-4 cursor-grab" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
-          
+                    {/* Movie posters */}
                     <div className="flex-shrink-0 w-32">
                         <div className="h-48 bg-purple-900 rounded overflow-hidden">
                             <img src="https://via.placeholder.com/135x200/6b46c1/ffffff?text=Ram+Katha" className="w-full h-full object-cover" alt="Movie poster" />
@@ -213,11 +215,12 @@ function StreamingPlatform() {
                     </div>
                 </div>
             </div>
- 
+
+            {/* Drama Delights */}
             <div className="mt-8 container mx-auto px-4">
                 <h2 className="text-xl font-bold mb-3">Drama Delights</h2>
                 <div ref={dramaRowRef} className="flex space-x-4 overflow-x-auto pb-4 cursor-grab" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
-          
+                    {/* Drama posters */}
                     <div className="flex-shrink-0 w-32">
                         <div className="h-48 bg-teal-900 rounded overflow-hidden">
                             <img src="https://via.placeholder.com/135x200/0f766e/ffffff?text=Aurora" className="w-full h-full object-cover" alt="Drama poster" />
@@ -256,11 +259,11 @@ function StreamingPlatform() {
                 </div>
             </div>
 
- 
+            {/* Something For Everyone */}
             <div className="mt-8 container mx-auto px-4">
                 <h2 className="text-xl font-bold mb-3">Something For Everyone</h2>
                 <div ref={everyoneRowRef} className="flex space-x-4 overflow-x-auto pb-4 cursor-grab" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
-              
+                    {/* Mixed content posters */}
                     <div className="flex-shrink-0 w-32">
                         <div className="h-48 bg-yellow-600 rounded overflow-hidden">
                             <img src="https://via.placeholder.com/135x200/ca8a04/ffffff?text=Gangubai" className="w-full h-full object-cover" alt="Movie poster" />
@@ -299,11 +302,11 @@ function StreamingPlatform() {
                 </div>
             </div>
 
-  
+            {/* Top 10 in India Today - Hindi */}
             <div className="mt-8 container mx-auto px-4 mb-16">
                 <h2 className="text-xl font-bold mb-3">Top 10 in India Today - Hindi</h2>
                 <div ref={topTenRowRef} className="flex space-x-4 overflow-x-auto pb-4 cursor-grab" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
- 
+                    {/* Top 10 items with numbers */}
                     <div className="flex-shrink-0 w-32 relative">
                         <div className="absolute -left-4 bottom-0 text-6xl font-bold text-white opacity-80">1</div>
                         <div className="h-48 bg-amber-800 rounded overflow-hidden">
@@ -349,7 +352,7 @@ function StreamingPlatform() {
                 </div>
             </div>
 
-    
+            {/* Bottom Navigation Bar for Mobile */}
             <div className="fixed bottom-0 inset-x-0 bg-gray-900 border-t border-gray-800 flex justify-around py-2 md:hidden">
                 <a href="#" className="text-center px-4 py-1">
                     <i className="fas fa-home text-lg"></i>

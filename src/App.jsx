@@ -12,6 +12,7 @@ import FlintstonesUI from './Component/FlintstonesUI';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import StreamingPlatform from './Component/StreamingPlatform';
 import Footer from './Component/Footer'
+import StreamingPlatform1 from './Component/StreamingPlatform1.';
 
 function App() {
   const [Data, SetData] = useState([...items]);
@@ -34,7 +35,8 @@ function App() {
             <Route path='/PageDetails/:id' element={<FlintstonesUI />} />
             <Route path='/Contact' element={<Contact />} />
             <Route path="/Search" element={<SerachBar item={Data} />} />
-            <Route path='/StreamingPlatform' element={<StreamingPlatform />} />
+            {/* <Route path='/StreamingPlatform/:id' element={<StreamingPlatform />} /> */}
+            <Route path='/StreamingPlatform/:id' element={<StreamingPlatform1 />} />
 
 
           </Routes>

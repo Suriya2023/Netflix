@@ -69,7 +69,9 @@
   padding: 7px;
 
 }
-
+#reacticon > SocialIcon{
+  width:10px;
+}
 #adujest {
   display: flex;
   width: 97vw;
