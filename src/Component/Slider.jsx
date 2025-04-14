@@ -3,7 +3,7 @@ import { items } from '../Data/400Data';
 import { SeralData } from '../Data/Serial';
 import { movies } from '../Data/Movies';
 
-function Slider({ currentShow }) {
+function Slider() {
     const featuredMovie = {
         title: "Brahmastra: Part One - Shiva",
         year: "2022",
@@ -60,150 +60,135 @@ function Slider({ currentShow }) {
     }, []);
 
     return (
-        <div className='md:p-6 relative'>
-            <div className="bg-black text-white min-h-screen">
-                <main className="container mx-auto px-4">
+        <>
+            <section className='bg-black text-white scroll-auto relative'>
+                <div className='md:p-6  relative'>
+                    <div className=" min-h-screen">
+                        <main className="container mx-auto px-4">
 
-                    {/* Section 1 */}
-                    <section className="mb-8">
-                        <div className='flex p-1.5 justify-between my-1.5'>
-                            <h2 className="text-xl font-bold mb-4">Latest Episodes Before TV</h2>
-                            <div>
-                                <button className='border shadow-2xl border-white cursor-pointer hover:bg-red-600 hover:text-white hover:border-0 rounded-xl py-3.5 px-3.5' onClick={() => handleSlide('left', ref1)}>{`<`}</button> &nbsp;
-                                <button className='border shadow-2xl border-white cursor-pointer hover:bg-red-600 hover:text-white hover:border-0 rounded-xl py-3.5 px-3.5' onClick={() => handleSlide('right', ref1)}>{`>`}</button>
-                            </div>
-                        </div>
-                        <div ref={ref1} className="flex overflow-x-auto space-x-4 pb-4 scroll-smooth">
-                            {SeralData.map((entry, index) => (
-                                <div key={entry.id || index} className="flex-none w-32 md:w-40 lg:w-44">
-                                    <div className="rounded overflow-hidden shadow-lg hover:scale-105 transition-transform duration-200">
-                                        <img
-                                            src={getImageUrl(entry.image?.thumbnail)}
-                                            alt={entry.image?.alt || entry.title}
-                                            className="w-full cursor-pointer h-48 md:h-56 lg:h-64 object-cover"
-                                        />
+                         
+                            <section className="mb-8">
+                                <div className='flex p-1.5  items-baseline  justify-between my-1.5'>
+                                    <h2 className="text-xl font-bold mb-4">Latest Episodes Before TV</h2>
+                                    <div >
+                                        <button className='border smvisible shadow-2xl border-white cursor-pointer hover:bg-red-600 hover:text-white hover:border-0 rounded-xl py-3.5 px-3.5' onClick={() => handleSlide('left', ref1)}>{`<`}</button> &nbsp;
+                                        <button className='border shadow-2xl border-white cursor-pointer hover:bg-red-600 hover:text-white hover:border-0 rounded-xl py-3.5 px-3.5' onClick={() => handleSlide('right', ref1)}>{`>`}</button>
                                     </div>
-                                    <div className="mt-1 text-sm truncate text-white">{entry.title}</div>
                                 </div>
-                            ))}
-                        </div>
-                    </section>
-
-                    {/* Featured Movie */}
-                    <section className="mb-8 relative">
-                        <div className="bg-gray-900 rounded-lg overflow-hidden">
-                            <div className="flex flex-col md:flex-row">
-                                <div className="md:w-1/2">
-                                    <img
-                                        src={featuredMovie.image}
-                                        alt={featuredMovie.title}
-                                        className="w-full cursor-pointer h-64 md:h-full object-cover"
-                                    />
-                                </div>
-                                <div className="md:w-1/2 p-6">
-                                    <div className="flex justify-between items-center mb-2">
-                                        <h3 className="text-xl font-bold text-orange-500">{featuredMovie.title}</h3>
-                                        <span className="text-gray-400">हिंदी</span>
-                                    </div>
-                                    <div className="flex text-sm text-gray-400 space-x-2 mb-4">
-                                        <span>{featuredMovie.year}</span>
-                                        <span>•</span>
-                                        <span>{featuredMovie.rating}</span>
-                                        <span>•</span>
-                                        <span>{featuredMovie.duration}</span>
-                                        <span>•</span>
-                                        <span>{featuredMovie.languages}</span>
-                                    </div>
-                                    <p className="text-gray-300 mb-6">{featuredMovie.description}</p>
-                                    <button className="flex items-center justify-center bg-white text-black rounded-md px-6 py-2 font-bold">
-                                        <span className="mr-2">▶</span> Watch Now
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-
-
-
-                    <section className="mb-8">
-                        <div className='flex p-1.5 justify-between my-1.5'>
-                            <h2 className="text-xl font-bold mb-4">Latest Releases </h2>
-                            <div>
-                                <button className='border shadow-2xl border-white cursor-pointer hover:bg-red-600 hover:text-white hover:border-0 rounded-xl py-3.5 px-3.5' onClick={() => handleSlide('left', ref2)}>{`<`}</button> &nbsp;
-                                <button className='border shadow-2xl border-white cursor-pointer hover:bg-red-600 hover:text-white hover:border-0 rounded-xl py-3.5 px-3.5' onClick={() => handleSlide('right', ref2)}>{`>`}</button>
-                            </div>
-                        </div>
-                        <div ref={ref2} className="flex overflow-x-auto space-x-4 pb-4 scroll-smooth">
-                            {movies.map((entry, index) => (
-                                <div key={entry.id || index} className="flex-none w-32 md:w-40 lg:w-44">
-                                    <div className="rounded overflow-hidden shadow-lg hover:scale-105 transition-transform duration-200">
-                                        <img
-                                            src={(entry.image)}
-                                            alt={entry.image?.alt || entry.title}
-                                            className="w-full cursor-pointer h-48 md:h-56 lg:h-64 object-cover"
-                                        />
-
-                                        {/* Hover Card */}
-                                        <div className="absolute top-0 left-0 z-10 hidden group-hover:flex flex-col w-96 bg-[#141414] text-white rounded-xl p-4 shadow-2xl transition-all duration-300 ease-in-out">
-                                            <img 
-                                                src={entry.image}
-                                                alt={entry.title}
-                                                className="w-full cursor-pointer h-48 rounded-lg object-cover mb-2"
-                                            />
-
-                                            <button className="bg-white text-black font-semibold py-2 px-4 rounded-md flex items-center justify-center mb-2 hover:bg-red-600 hover:text-white transition">
-                                                ▶️ Watch Now
-                                            </button>
-
-                                            <div className="text-sm text-gray-400 mb-1">
-                                                {entry.year} • {entry.rating} • {entry.language} • {entry.genre}
-                                            </div>
-
-                                            <div className="text-xs text-gray-300 line-clamp-4">
-                                                {entry.description}
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="mt-1 text-sm truncate text-white">{entry.title}</div>
-                                </div>
-                            ))}
-                        </div>
-                    </section>
-
-
-                    {/* Section 3 */}
-                    <section id='SdNone' className="mb-8 ">
-                        <div className='flex p-1.5 justify-between my-1.5'>
-                            <h2 className="text-xl font-bold mb-4">Movies Entertainment</h2>
-                            <div>
-                                <button className='border shadow-2xl border-white cursor-pointer hover:bg-red-600 hover:text-white hover:border-0 rounded-xl py-3.5 px-3.5' onClick={() => handleSlide('left', ref3)}>{`<`}</button> &nbsp;
-                                <button className='border shadow-2xl border-white cursor-pointer hover:bg-red-600 hover:text-white hover:border-0 rounded-xl py-3.5 px-3.5' onClick={() => handleSlide('right', ref3)}>{`>`}</button>
-                            </div>
-                        </div>
-                        <div ref={ref3} className="flex overflow-x-auto space-x-4 pb-4 scroll-smooth">
-                            {items.map((entry, index) =>
-                                entry.titles.map((title, subIndex) => {
-                                    const jaw = title.jawSummary;
-                                    return (
-                                        <div key={`${index}-${subIndex}`} className="flex-none w-32 md:w-40 lg:w-44">
-                                            <div className="rounded overflow-hidden shadow-lg hover:scale-105 transition-transform duration-200">
-                                                <img
-                                                    src={jaw.backgroundImage?.url || "/api/placeholder/180/270"}
-                                                    alt={jaw.title}
+                                <div ref={ref1} className="flex scrollbar-hidden overflow-x-auto space-x-4 pb-4 scroll-smooth">
+                                    {SeralData.map((entry, index) => (
+                                        <div key={entry.id || index} className="flex-none w-32 md:w-40 lg:w-44">
+                                            <div className="rounded scrollbar-hidden overflow-hidden shadow-lg hover:scale-105 transition-transform duration-200">
+                                                <img loading='lazy'
+                                                    src={getImageUrl(entry.image?.thumbnail)}
+                                                    alt={entry.image?.alt || entry.title}
                                                     className="w-full cursor-pointer h-48 md:h-56 lg:h-64 object-cover"
                                                 />
                                             </div>
-                                            <div className="mt-1 text-sm truncate text-white">{jaw.title}</div>
+                                            <div className="mt-1 text-sm truncate text-white">{entry.title}</div>
                                         </div>
-                                    );
-                                })
-                            )}
-                        </div>
-                    </section>
+                                    ))}
+                                </div>
+                            </section>
 
-                </main>
-            </div>
-        </div>
+                             
+                            <section className="mb-8 relative">
+                                <div className="bg-gray-900 rounded-lg overflow-hidden">
+                                    <div className="flex flex-col md:flex-row">
+                                        <div className="md:w-1/2">
+                                            <img loading='lazy'
+                                                src={featuredMovie.image}
+                                                alt={featuredMovie.title}
+                                                className="w-full cursor-pointer h-64 md:h-full object-cover"
+                                            />
+                                        </div>
+                                        <div className="md:w-1/2 p-6">
+                                            <div className="flex justify-between items-center mb-2">
+                                                <h3 className="text-xl font-bold text-orange-500">{featuredMovie.title}</h3>
+                                                <span className="text-gray-400">हिंदी</span>
+                                            </div>
+                                            <div className="flex text-sm text-gray-400 space-x-2 mb-4">
+                                                <span>{featuredMovie.year}</span>
+                                                <span>•</span>
+                                                <span>{featuredMovie.rating}</span>
+                                                <span>•</span>
+                                                <span>{featuredMovie.duration}</span>
+                                                <span>•</span>
+                                                <span>{featuredMovie.languages}</span>
+                                            </div>
+                                            <p className="text-gray-300 mb-6">{featuredMovie.description}</p>
+                                            <button className="flex items-center justify-center bg-white text-black rounded-md px-6 py-2 font-bold">
+                                                <span className="mr-2">▶</span> Watch Now
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+
+
+
+                            <section className="mb-8">
+                                <div className='flex p-1.5 items-baseline  justify-between my-1.5'>
+                                    <h2 className="text-xl font-bold mb-4">Latest Releases </h2>
+                                    <div className=''>
+                                        <button className='border smvisible shadow-2xl border-white cursor-pointer hover:bg-red-600 hover:text-white hover:border-0 rounded-xl py-3.5 px-3.5' onClick={() => handleSlide('left', ref2)}>{`<`}</button> &nbsp;
+                                        <button className='border shadow-2xl border-white cursor-pointer hover:bg-red-600 hover:text-white hover:border-0 rounded-xl py-3.5 px-3.5' onClick={() => handleSlide('right', ref2)}>{`>`}</button>
+                                    </div>
+                                </div>
+                                <div ref={ref2} className="flex scrollbar-hidden overflow-x-auto space-x-4 pb-4 scroll-smooth">
+                                    {movies.map((entry, index) => (
+                                        <div key={entry.id || index} className="flex-none  w-32 md:w-40 lg:w-44">
+                                            <div className="rounded overflow-hidden shadow-lg hover:scale-105 transition-transform duration-200">
+                                                <img loading='lazy'
+                                                    src={(entry.image)}
+                                                    alt={entry.image?.alt || entry.title}
+                                                    className="w-full cursor-pointer h-48 md:h-56 lg:h-64 object-cover"
+                                                />
+ 
+                                                
+                                            </div>
+                                            <div className="mt-1 text-sm truncate text-white">{entry.title}</div>
+                                        </div>
+                                    ))}
+                                </div>
+                            </section>
+
+ 
+                            <section id='SdNone' className="mb-8 ">
+                                <div className='flex p-1.5 items-baseline  justify-between my-1.5'>
+                                    <h2 className="text-xl font-bold mb-4">Movies Entertainment</h2>
+                                    <div>
+                                        <button className='border smvisible shadow-2xl border-white cursor-pointer hover:bg-red-600 hover:text-white hover:border-0 rounded-xl py-3.5 px-3.5' onClick={() => handleSlide('left', ref3)}>{`<`}</button> &nbsp;
+                                        <button className='border shadow-2xl border-white cursor-pointer hover:bg-red-600 hover:text-white hover:border-0 rounded-xl py-3.5 px-3.5' onClick={() => handleSlide('right', ref3)}>{`>`}</button>
+                                    </div>
+                                </div>
+                                <div ref={ref3} className="flex scrollbar-hidden overflow-x-auto space-x-4 pb-4 scroll-smooth">
+                                    {items.map((entry, index) =>
+                                        entry.titles.map((title, subIndex) => {
+                                            const jaw = title.jawSummary;
+                                            return (
+                                                <div key={`${index}-${subIndex}`} className="flex-none  w-32 md:w-40 lg:w-44">
+                                                    <div className="rounded overflow-hidden  shadow-lg hover:scale-105 transition-transform duration-200">
+                                                        <img loading='lazy'
+                                                            src={jaw.backgroundImage?.url || "/api/placeholder/180/270"}
+                                                            alt={jaw.title}
+                                                            className="w-full cursor-pointer h-48 md:h-56 lg:h-64 object-cover"
+                                                        />
+                                                    </div>
+                                                    <div className="mt-1 text-sm truncate text-white">{jaw.title}</div>
+                                                </div>
+                                            );
+                                        })
+                                    )}
+                                </div>
+                            </section>
+
+                        </main>
+                    </div>
+                </div>
+            </section>
+
+        </>
     );
 }
 

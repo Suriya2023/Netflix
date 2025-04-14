@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { FaPlay, FaFilm, FaStar } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-import Slider from './Slider';
+// import Slider from './Slider';
 
 function NetflixUIClone({ items }) {
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -16,7 +16,7 @@ function NetflixUIClone({ items }) {
     useEffect(() => {
         const interval = setInterval(() => {
             setCurrentIndex((prev) => (prev + 1) % allShows.length);
-        }, 100000000000);
+        }, 1000000000);
         return () => clearInterval(interval);
     }, [allShows.length]);
 
@@ -36,12 +36,12 @@ function NetflixUIClone({ items }) {
         <>
 
             <br /><br />
-            <div className=" text-white">
-                <div id="MySlide" className="text-white font-sans flex flex-col md:flex-row">
-                    <main className="flex-1 flex-row-reverse p-4 md:p-6 relative">
+            <div className=" bg-black z-0 text-white">
+                <div id="MySlide" className="text-white  font-sans flex flex-col md:flex-row">
+                    <main className="flex-1 container mx-auto flex-row-reverse p-4 md:p-6 relative">
                         {currentShow?.backgroundImage?.url && (
                             <div className="absolute inset-0 mix-blend-multiply">
-                                <img
+                                <img loading='lazy'
                                     src={currentShow.backgroundImage.url}
                                     alt={currentShow?.title || 'Poster'}
                                     className="w-full cursor-pointer h-full object-cover transition-opacity duration-700 ease-in-out"
@@ -51,7 +51,7 @@ function NetflixUIClone({ items }) {
                         )}
 
                         {currentShow && (
-                            <div style={{ display: 'flex', justifyContent: 'end' }} id="adujest" className="relative">
+                            <div style={{ display: 'flex', justifyContent: 'end' }} id="adujest" className="relative  container mx-auto overflow-x-hidden">
                                 <Link to={`/PageDetails/${currentShow?.id || ''}`}>
                                     <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mt-4">
                                         {currentShow?.title || 'No Title'}
@@ -103,11 +103,11 @@ function NetflixUIClone({ items }) {
                                                     to={`/PageDetails/${show?.id || ''}`}
                                                     key={`${show?.id || 'movie'}-${index}`}
                                                     ref={(el) => (thumbnailsRef.current[index] = el)}
-                                                    className={`shrink-0 rounded-lg   overflow-hidden w-[100px] sm:w-[110px] md:w-[10%] lg:w-[8%] 
+                                                    className={`shrink-0 h-fit rounded-lg   overflow-hidden w-[100px] sm:w-[110px] md:w-[10%] lg:w-[8%] 
                                                 ${index === currentIndex ? ' scale-105 transition-transform duration-300' : ''}`}
                                                 >
                                                     {show?.backgroundImage?.url && (
-                                                        <img
+                                                        <img loading='lazy'
                                                             src={show.backgroundImage.url}
                                                             alt={show?.title || 'Thumbnail'}
                                                             className="w-full hover:scale-[0.9]  hover:border hover:rounded-2xl hover:p-0.5 transition t-0.5  cursor-pointer h-[140px] sm:h-[150px] md:h-[160px] object-cover"
@@ -127,10 +127,7 @@ function NetflixUIClone({ items }) {
 
                 </div>
 
-                <div className=' bg-black relative w-[100vw] overflow-hidden'>
-                    <br />
-                    <Slider currentShow={currentShow} />
-                </div>
+
             </div>
 
         </>

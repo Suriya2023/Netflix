@@ -10,6 +10,8 @@ import NetflixUIClone from './Component/NetflixUIClone';
 import MoviesVedios from './Component/MoviesVedios';
 import FlintstonesUI from './Component/FlintstonesUI';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import StreamingPlatform from './Component/StreamingPlatform';
+import Footer from './Component/Footer'
 
 function App() {
   const [Data, SetData] = useState([...items]);
@@ -20,13 +22,23 @@ function App() {
       <div className='mxwidth'>
         <BrowserRouter>
           <Navabr setData={SetData} />
+
           <Routes>
-            <Route path="/" element={<NetflixUIClone setMovies={setMovies} Movies={Movies} items={Data} />} />
+            <Route path="/" element={
+              <>
+                <NetflixUIClone setMovies={setMovies} Movies={Movies} items={Data} />
+                <Slider />
+              </>
+            } />
+
             <Route path='/PageDetails/:id' element={<FlintstonesUI />} />
             <Route path='/Contact' element={<Contact />} />
             <Route path="/Search" element={<SerachBar item={Data} />} />
+            <Route path='/StreamingPlatform' element={<StreamingPlatform />} />
+
 
           </Routes>
+          <Footer />
         </BrowserRouter>
       </div>
     </>

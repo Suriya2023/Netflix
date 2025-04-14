@@ -53,7 +53,7 @@ function SerachBar({ item }) {
                 <p><strong>Rating:</strong> {js?.maturity?.rating?.value}</p>
                 <p><strong>Synopsis:</strong> {js?.synopsis}</p>
                 {js?.backgroundImage?.url && (
-                  <img src={js.backgroundImage.url} alt={js.title} className="mt-4 w-full rounded shadow" />
+                  <img src={js.backgroundImage.url}  loading='lazy' alt={js.title} className="mt-4 w-full rounded shadow" />
                 )}
               </div>
             );
