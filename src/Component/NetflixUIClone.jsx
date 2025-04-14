@@ -16,7 +16,7 @@ function NetflixUIClone({ items }) {
     useEffect(() => {
         const interval = setInterval(() => {
             setCurrentIndex((prev) => (prev + 1) % allShows.length);
-        }, 1000);
+        }, 10000000000);
         return () => clearInterval(interval);
     }, [allShows.length]);
 

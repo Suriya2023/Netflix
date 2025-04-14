@@ -58,7 +58,7 @@ function Navbar({ setData }) {
   return (
     <div>
       <div
-        className={`flex z-50 items-center justify-between fixed w-full z-50 transition-colors duration-300 ${isScrolled ? "bg-black text-white" : "bg-white"
+        className={`flex  items-center justify-between fixed w-full z-50 transition-colors duration-300 ${isScrolled ? "bg-black text-white" : "bg-white"
           }`}
       >
         <div className="w-full  z-auto container mx-auto  px-4 py-2 flex items-center justify-between">
@@ -69,7 +69,7 @@ function Navbar({ setData }) {
               <Link to="/" className="w-3 h-3 bg-green-500 rounded-full"></Link>
             </div>
 
-            <Link to="/" className="text-red-600 font-bold text-2xl">NETFLIX</Link>
+            <Link to="/" className="  font-bold text-2xl">MovieHub</Link>
 
             <div className="hidden lg:flex justify-center items-center gap-3 ml-4 text-sm font-medium">
               <button onClick={() => FilterByCategory("movie")} className="hover:text-red-600 cursor-pointer dark:text-white">Movies</button>
@@ -110,7 +110,7 @@ function Navbar({ setData }) {
                 className="w-8 h-8 rounded-full"
               /> */}
 
-              <button className="button border  rounded-xl py-1 px-4 cursor-pointer hover:bg-black hover:text-white" >Login </button>
+              <button id="FooterNone" className="button border  rounded-xl py-1 px-4 cursor-pointer hover:bg-black hover:text-white" >Login </button>
             </Link>
           </div>
         </div>

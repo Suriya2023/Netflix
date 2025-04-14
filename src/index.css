@@ -104,7 +104,19 @@
   }
 
 }
+@media screen and (max-width:650px) {
+  #FooterNone{
+    display: none;
+  }
+  
 
+}
+@media screen and (min-width:651px) 
+{
+#bootomnone{
+  display: none;
+}  
+}
 #MySlide {
   overflow: hidden;
   width: auto;
@@ -118,6 +130,7 @@
 .scrollbar-hidden::-webkit-scrollbar {
   display: none;
 }
+ 
 
 .scrollbar-hidden {
   -ms-overflow-style: none;

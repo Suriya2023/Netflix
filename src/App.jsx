@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import Navabr from './Component/Navabr';
 import SerachBar from './Component/SerachBar';
@@ -11,35 +11,40 @@ import MoviesVedios from './Component/MoviesVedios';
 import FlintstonesUI from './Component/FlintstonesUI';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import StreamingPlatform from './Component/StreamingPlatform';
-import Footer from './Component/Footer'
+import Footer from './Component/Footer';
 import StreamingPlatform1 from './Component/StreamingPlatform1.';
+import BottomNavbar from './Component/BottomNavbar';
 
 function App() {
   const [Data, SetData] = useState([...items]);
   const [Movies, setMovies] = useState([]);
+  const [notifications, setNotifications] = useState([]); // <-- Yeh naya add kiya
+
+  const handleMovieClick = (movie) => {
+    setNotifications((prev) => [...prev, movie]);
+  };
 
   return (
     <>
       <div className='mxwidth'>
         <BrowserRouter>
-          <Navabr setData={SetData} />
+          <Navabr setData={SetData} notifications={notifications} setNotifications={setNotifications} />
 
           <Routes>
             <Route path="/" element={
               <>
                 <NetflixUIClone setMovies={setMovies} Movies={Movies} items={Data} />
-                <Slider />
+                <Slider movies={Data} handleMovieClick={handleMovieClick} />
               </>
             } />
 
             <Route path='/PageDetails/:id' element={<FlintstonesUI />} />
             <Route path='/Contact' element={<Contact />} />
             <Route path="/Search" element={<SerachBar item={Data} />} />
-            {/* <Route path='/StreamingPlatform/:id' element={<StreamingPlatform />} /> */}
             <Route path='/StreamingPlatform/:id' element={<StreamingPlatform1 />} />
-
-
           </Routes>
+
+          <BottomNavbar/>
           <Footer />
         </BrowserRouter>
       </div>

@@ -41,7 +41,7 @@ const Footer = () => {
     "Preferences", "Do not Sell or Share my Personal Information"];
 
   return (
-    <div className='bg-black'>
+    <div id='FooterNone' className='bg-black'>
       <footer className="bg-black text-gray-300 py-10 px-4 md:px-8">
         <div className="container mx-auto">
 
@@ -69,13 +69,13 @@ const Footer = () => {
               <h3 className="font-medium mb-3">Connect with us</h3>
               <div className="flex space-x-4">
 
-                <a href="#" id='reacticon' className="bg-gray-800 gap-1.5 p-2 rounded-full hover:bg-gray-700 transition">
+                {/* <a href="#" id='reacticon' className="bg-gray-800 gap-1.5 p-2 rounded-full hover:bg-gray-700 transition">
                   <SocialIcon className='w-2xl' url="https://twitter.com" />&nbsp;&nbsp;
                   <SocialIcon className='w-2xl' url="https://facebook.com" />&nbsp;&nbsp;
                   <SocialIcon className='w-2xl' url="https://instagram.com" />&nbsp;&nbsp;
                   <SocialIcon className='w-2xl' url="https://youtub.com" />
 
-                </a>
+                </a> */}
 
               </div>
             </div>
