@@ -21,13 +21,20 @@ function NetflixUIClone({ items }) {
     }, [allShows.length]);
 
     useEffect(() => {
-        if (thumbnailsRef.current[currentIndex]) {
-            thumbnailsRef.current[currentIndex].scrollIntoView({
-                behavior: 'smooth',
-                inline: 'start',
-                block: 'nearest',
-            });
-        }
+        if (!containerRef.current || !thumbnailsRef.current[currentIndex]) return;
+
+        const container = containerRef.current;
+        const thumbnail = thumbnailsRef.current[currentIndex];
+
+        const containerRect = container.getBoundingClientRect();
+        const thumbnailRect = thumbnail.getBoundingClientRect();
+
+        const scrollAmount = thumbnail.offsetLeft - container.offsetLeft - container.clientWidth / 2 + thumbnail.clientWidth / 2;
+
+        container.scrollTo({
+            left: scrollAmount,
+            behavior: 'smooth',
+        });
     }, [currentIndex]);
 
     const currentShow = allShows[currentIndex]?.jawSummary ?? null;
@@ -94,7 +101,7 @@ function NetflixUIClone({ items }) {
                                 </div>
 
                                 <h2 className="mt-10 text-lg sm:text-xl font-semibold">Coming Movies</h2>
-                                <div ref={containerRef} className="mt-4 overflow-x-auto pb-2 scrollbar-hidden">
+                                <div ref={containerRef} className="mt-4 overflow-x-auto overflow-y-hidden pb-2 scrollbar-hidden">
                                     <div className="flex gap-3 md:gap-4">
                                         {allShows.map((movie, index) => {
                                             const show = movie?.jawSummary;
